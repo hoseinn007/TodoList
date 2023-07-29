@@ -1,38 +1,220 @@
-.App {
-  text-align: center;
-}
+/* To-Do List */
+/*-----------------------------------------*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  background: rgb(135, 200, 200);
 }
 
-.App-link {
-  color: #61dafb;
+.todo-form {
+  align-self: center;
+  box-sizing: border-box;
+  height: 80px;
+  width: 450px;
+  box-shadow: 0 0 2px #102213;
+  display: flex;
+  padding: 1rem;
+  margin-top: 20px;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #3b7c4a;
+  padding: 9px;
+  cursor: text;
+}
+.todo-form-editing {
+  background: #286c38;
+  box-shadow: 0 0 8px #8ea241;
+}
+.todo-form:hover {
+  border-color: gray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-form:focus-within {
+  background: #347944;
+  border-color: gray;
+}
+
+.todo-form span {
+  flex: 1 0 60%;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  margin-top: 0.33333rem;
+}
+
+.todo-form input {
+  outline: none;
+  border: none;
+  color: rgb(162, 162, 162);
+  height: 30px;
+  width: 250px;
+  box-shadow: 0 0 5px #11a818;
+  border-radius: 5px;
+}
+
+.todo-form input:hover {
+  box-shadow: 0 0 8px #11a818;
+}
+
+.todo-form button {
+  background: #11a818;
+  width: 100px;
+  border: none;
+  color: #c2c2c2;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 2px 5px 2px;
+  margin: 2px 2px 2px 2px;
+  box-shadow: 0 0 5px #0f9e16;
+  border-radius: 5px;
+}
+
+.todo-form button:hover {
+  box-shadow: 0 0 8px #086e0d;
+}
+
+.todo-form button:active {
+  box-shadow: 0 0 8px #055509;
+}
+
+.editing-todo {
+  display: none !important;
+}
+
+.todo-status {
+  align-self: center;
+  box-sizing: border-box;
+  height: 70px;
+  width: 450px;
+  box-shadow: 0 0 2px #102213;
+  display: flex;
+  padding: 1rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #3b7c4a;
+  padding: 9px;
+  cursor: text;
+}
+.todo-status-hidden {
+  display: none;
+}
+
+.todo-status span {
+  margin-right: 20px;
+  margin-top: 5px;
+  /* display: flex; */
+}
+.todo-status-filter {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todo-status-filter a {
+  background: #11a818;
+  width: 100px;
+  border: none;
+  color: #c2c2c2;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 5px 2px 5px 2px;
+  margin: 2px 2px 2px 2px;
+  box-shadow: 0 0 5px #0f9e16;
+  border-radius: 5px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.todo-status-filter {
+  justify-content: space-between;
+  align-items: center;
+}
+.todo-status-filter a:hover {
+  border-color: gray;
+}
+
+.selected {
+  background: #033905 !important;
+  box-shadow: 0 0 8px #58f45f !important;
+  font-size: 1.09rem !important;
+  align-items: center;
+}
+
+.todo {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  background-color: #4e915d;
+  box-shadow: 0 0 2px #102213;
+  padding: 0px 10px 0px 10px;
+  font-size: 1rem;
+  min-height: 68px;
+  height: 80px;
+  width: 430px;
+  margin: 20px 0 20px 0;
+  border-radius: 10px;
+}
+
+.todo:hover {
+  background-color: #41814f;
+  box-shadow: 0 0 5px #102213;
+  cursor: pointer;
+}
+
+.completed-todo {
+  background: #175224;
+}
+
+.completed-todo:hover {
+  background: #175224;
+}
+
+.completed::before {
+  content: "✔";
+  color: #d3e6d6;
+  font-size: 15px;
+  /* background: red; */
+}
+.todo span {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+.todo div {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.todo div svg {
+  margin: 5px;
+  justify-content: space-between;
+}
+
+.todo-wrapper {
+  justify-content: space-between;
+  width: 450px;
+  height: 800px;
+  overflow: auto;
+}
+.todo-wrapper h1 {
+  display: flex;
+  background: transparent;
+  width: 450px;
+  justify-content: center;
+  font-size: 25px;
 }
