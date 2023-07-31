@@ -9,6 +9,8 @@ export const TodoList = () => {
       return todosState.todos.filter((todo) => !todo.isCompleted);
     } else if (todosState.filter === "completed") {
       return todosState.todos.filter((todo) => todo.isCompleted);
+    } else if (todosState.filter === "all") {
+      return todosState.todos;
     }
     return todosState.todos;
   };

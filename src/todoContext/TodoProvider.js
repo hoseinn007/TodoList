@@ -1,20 +1,33 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ACTION } from "../helpers/Keycodes";
 uuidv4();
-
+export const TodoContext = createContext();
 const initialState = { todos: [], filter: "all" };
+
+const getInitialState = () => {
+  const isThereTodos = localStorage.getItem("Todos");
+  const lastTodos = JSON.parse(isThereTodos);
+  return isThereTodos ? lastTodos : initialState;
+};
 
 export const todoReducer = (state, action) => {
   switch (action.type) {
     case ACTION.ADD_TODO:
-      const newTodo = {
+      const newTask = {
         id: uuidv4(),
         task: action.payload,
         isCompleted: false,
         isEditing: false,
       };
-      return { ...state, todos: [...state.todos, newTodo], filter: "all" };
+      const newTodo = {
+        ...state,
+        todos: [...state.todos, newTask],
+        filter: "all",
+      };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+
+      return newTodo;
     case ACTION.EDITING: {
       const updatedTodos = state.todos.map((todo) => {
         if (todo.id === action.payload) {
@@ -22,7 +35,9 @@ export const todoReducer = (state, action) => {
         }
         return todo;
       });
-      return { ...state, todos: updatedTodos };
+      const newTodo = { ...state, todos: updatedTodos };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+      return newTodo;
     }
     case ACTION.EDITED: {
       const updatedTodos = state.todos.map((todo) => {
@@ -35,7 +50,10 @@ export const todoReducer = (state, action) => {
         }
         return todo;
       });
-      return { ...state, todos: updatedTodos };
+      const newTodo = { ...state, todos: updatedTodos };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+
+      return newTodo;
     }
     case ACTION.COMPLETED: {
       const updatedTodos = state.todos.map((todo) => {
@@ -44,16 +62,23 @@ export const todoReducer = (state, action) => {
         }
         return todo;
       });
-      return { ...state, todos: updatedTodos };
+      const newTodo = { ...state, todos: updatedTodos };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+      return newTodo;
     }
     case ACTION.DELETED: {
       const updatedTodos = state.todos.filter(
         (todo) => todo.id !== action.payload
       );
-      return { ...state, todos: updatedTodos };
+      const newTodo = { ...state, todos: updatedTodos };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+
+      return newTodo;
     }
     case ACTION.CHANGE_FILTER: {
-      return { ...state, filter: action.payload };
+      const newTodo = { ...state, filter: action.payload };
+      localStorage.setItem("Todos", JSON.stringify(newTodo));
+      return newTodo;
     }
 
     default:
@@ -61,8 +86,8 @@ export const todoReducer = (state, action) => {
   }
 };
 
-export const TodoContext = createContext();
 export const TodosProvider = ({ children }) => {
-  const value = useReducer(todoReducer, initialState);
+  const [initialUseState] = useState(getInitialState);
+  const value = useReducer(todoReducer, initialUseState);
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };

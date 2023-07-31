@@ -87,16 +87,12 @@
 }
 
 .todo-status {
-  align-self: center;
   box-sizing: border-box;
   height: 70px;
   width: 450px;
-  box-shadow: 0 0 2px #102213;
   display: flex;
-  padding: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
-  align-items: flex-start;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
@@ -114,7 +110,6 @@
 .todo-status span {
   margin-right: 20px;
   margin-top: 5px;
-  /* display: flex; */
 }
 .todo-status-filter {
   display: flex;
@@ -206,7 +201,7 @@
 }
 
 .todo-wrapper {
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 450px;
   height: 800px;
   overflow: auto;
