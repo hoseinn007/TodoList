@@ -1,11 +1,32 @@
 /* To-Do List */
 /*-----------------------------------------*/
+:root {
+  --bgMain: rgb(109, 159, 159);
+  --bgForm: #3b7c60;
+  --bgFormEditing: #286c38;
+  --bgFormFocus: #347944;
+  --bgStatusActive: #033905;
+  --bgTodo: #59b89c;
+  --bgTodoHover: #3d977c;
+  --bgCompleted: #2c7068;
+  --bgCompHover: #27655e;
+  --bS1: #11a818;
+  --bS2: #0f9e16;
+  --bS3: #086e0d;
+  --bS4: #055509;
+  --bS5: #58f45f;
+  --bS6: #102213;
+  --bS7: #8ea241;
+  --btnBg: #11a818;
+  --fC1: #c2c2c2;
+  --fC2: #bee9df;
+}
 
 #root {
   display: flex;
   justify-content: center;
-  height: 100vh;
-  background: rgb(135, 200, 200);
+  min-height: 100vh;
+  background: var(--bgMain);
 }
 
 .todo-form {
@@ -13,7 +34,7 @@
   box-sizing: border-box;
   height: 80px;
   width: 450px;
-  box-shadow: 0 0 2px #102213;
+  box-shadow: 0 0 2px var(--bS6);
   display: flex;
   padding: 1rem;
   margin-top: 20px;
@@ -23,20 +44,24 @@
   border: 1px solid transparent;
   border-radius: 12px;
   overflow: hidden;
-  background: #3b7c4a;
+  background: var(--bgForm);
   padding: 9px;
   cursor: text;
+  @media (max-width: 620px) {
+    width: calc(100% - 40px);
+    margin-left: 19px;
+  }
 }
 .todo-form-editing {
-  background: #286c38;
-  box-shadow: 0 0 8px #8ea241;
+  background: var(--bgFormEditing);
+  box-shadow: 0 0 8px var(--bS7);
 }
 .todo-form:hover {
   border-color: gray;
 }
 
 .todo-form:focus-within {
-  background: #347944;
+  background: var(--bgFormFocus);
   border-color: gray;
 }
 
@@ -53,33 +78,33 @@
   color: rgb(162, 162, 162);
   height: 30px;
   width: 250px;
-  box-shadow: 0 0 5px #11a818;
+  box-shadow: 0 0 5px var(--bS1);
   border-radius: 5px;
 }
 
 .todo-form input:hover {
-  box-shadow: 0 0 8px #11a818;
+  box-shadow: 0 0 8px var(--bS1);
 }
 
 .todo-form button {
-  background: #11a818;
+  background: var(--btnBg);
   width: 100px;
   border: none;
-  color: #c2c2c2;
+  color: var(--fC1);
   cursor: pointer;
   font-size: 0.9rem;
   padding: 5px 2px 5px 2px;
   margin: 2px 2px 2px 2px;
-  box-shadow: 0 0 5px #0f9e16;
+  box-shadow: 0 0 5px var(--bS2);
   border-radius: 5px;
 }
 
 .todo-form button:hover {
-  box-shadow: 0 0 8px #086e0d;
+  box-shadow: 0 0 8px var(--bS3);
 }
 
 .todo-form button:active {
-  box-shadow: 0 0 8px #055509;
+  box-shadow: 0 0 8px var(--bS4);
 }
 
 .editing-todo {
@@ -99,9 +124,13 @@
   border: 1px solid transparent;
   border-radius: 12px;
   overflow: hidden;
-  background: #3b7c4a;
+  background: var(--bgForm);
   padding: 9px;
   cursor: text;
+  @media (max-width: 620px) {
+    width: calc(100% - 40px);
+    margin-left: 19px;
+  }
 }
 .todo-status-hidden {
   display: none;
@@ -118,7 +147,7 @@
 }
 
 .todo-status-filter a {
-  background: #11a818;
+  background: var(--btnBg);
   width: 100px;
   border: none;
   color: #c2c2c2;
@@ -126,7 +155,7 @@
   font-size: 0.9rem;
   padding: 5px 2px 5px 2px;
   margin: 2px 2px 2px 2px;
-  box-shadow: 0 0 5px #0f9e16;
+  box-shadow: 0 0 5px var(--bS2);
   border-radius: 5px;
   margin-right: 10px;
   display: flex;
@@ -142,8 +171,8 @@
 }
 
 .selected {
-  background: #033905 !important;
-  box-shadow: 0 0 8px #58f45f !important;
+  background: var(--bgStatusActive) !important;
+  box-shadow: 0 0 8px var(--bS5) !important;
   font-size: 1.09rem !important;
   align-items: center;
 }
@@ -152,37 +181,36 @@
   justify-content: space-between;
   align-items: center;
   display: flex;
-  background-color: #4e915d;
-  box-shadow: 0 0 2px #102213;
+  background-color: var(--bgTodo);
+  box-shadow: 0 0 2px var(--bS6);
   padding: 0px 10px 0px 10px;
   font-size: 1rem;
   min-height: 68px;
   height: 80px;
   width: 430px;
-  margin: 20px 0 20px 0;
+  margin: 30px 0 20px 0;
   border-radius: 10px;
+  color: var(--fC2);
+  @media (max-width: 620px) {
+    width: calc(100% - 40px);
+    margin-left: 10px;
+  }
 }
 
 .todo:hover {
-  background-color: #41814f;
-  box-shadow: 0 0 5px #102213;
+  background-color: var(--bgTodoHover);
+  box-shadow: 0 0 5px var(--bS6);
   cursor: pointer;
 }
 
 .completed-todo {
-  background: #175224;
+  background: var(--bgCompleted);
 }
 
 .completed-todo:hover {
-  background: #175224;
+  background: var(--bgCompHover);
 }
 
-.completed::before {
-  content: "✔";
-  color: #d3e6d6;
-  font-size: 15px;
-  /* background: red; */
-}
 .todo span {
   width: inherit;
   height: inherit;
