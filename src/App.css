@@ -1,15 +1,15 @@
 /* To-Do List */
 /*-----------------------------------------*/
 :root {
-  --bgMain: rgb(109, 159, 159);
+  --bgMain: #e6efe8;
   --bgForm: #3b7c60;
   --bgFormEditing: #286c38;
   --bgFormFocus: #347944;
   --bgStatusActive: #033905;
-  --bgTodo: #59b89c;
-  --bgTodoHover: #3d977c;
-  --bgCompleted: #2c7068;
-  --bgCompHover: #27655e;
+  --bgTodo: rgb(185 206 173);
+  --bgTodoHover: rgb(159, 189, 141);
+  --bgCompleted: rgb(105, 135, 89);
+  --bgCompHover: rgb(67, 93, 53);
   --bS1: #11a818;
   --bS2: #0f9e16;
   --bS3: #086e0d;
@@ -18,8 +18,8 @@
   --bS6: #102213;
   --bS7: #8ea241;
   --btnBg: #11a818;
-  --fC1: #c2c2c2;
-  --fC2: #bee9df;
+  --fC1: #eeebeb;
+  --fC2: #043328;
 }
 
 #root {
@@ -205,6 +205,7 @@
 
 .completed-todo {
   background: var(--bgCompleted);
+  color: var(--fC1);
 }
 
 .completed-todo:hover {
